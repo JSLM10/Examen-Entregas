@@ -1,0 +1,6 @@
+# Los CSV de datos y de referencia son LF puro (asi lo exige el ejercicio).
+# Sin esto, Git for Windows con core.autocrlf=true los baja con CRLF y se suben a S3 alterados.
+*.csv text eol=lf
+*.sql text eol=lf
+*.sh  text eol=lf
+*.tf  text eol=lf

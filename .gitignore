@@ -1,0 +1,35 @@
+# Terraform: estado, plan y variables locales
+# (el archivo .terraform.lock.hcl SI se versiona, fija la version del provider)
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+!*.tfvars.example
+crash.log
+crash.*.log
+*.tfplan
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Credenciales y secretos
+.aws/
+.env
+.env.*
+*.pem
+*.key
+*.ppk
+id_*
+.secretos
+accessKeys.csv
+*credentials*.csv
+
+# Locales
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+
+# NOTA: evidencias/ y resultados/ NO se ignoran: son parte de la entrega.

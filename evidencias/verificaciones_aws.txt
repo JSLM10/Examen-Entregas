@@ -1,0 +1,34 @@
+# Verificaciones en AWS tras cargar el tercer dia (generado con AWS CLI y Terraform; ID de cuenta enmascarado)
+# Fecha de generacion: 2026-11-12T11:45:56Z
+
+$ aws s3 ls s3://<bucket>/entregas/ --recursive
+2026-11-12 06:43:07        313 entregas/fecha=2026-10-01/entregas.csv
+2026-11-12 06:43:08        313 entregas/fecha=2026-10-02/entregas.csv
+2026-11-12 06:44:27        323 entregas/fecha=2026-10-03/entregas.csv
+
+$ aws glue get-partitions ... --query "length(Partitions)"   # particiones registradas en el catalogo
+0
+
+$ aws glue get-table ... --query "Table.{CreateTime,UpdateTime}"   # la tabla no se modifico tras el despliegue
+{
+    "CreateTime": "2026-11-12T06:37:29-05:00",
+    "UpdateTime": "2026-11-12T06:37:29-05:00"
+}
+
+$ aws glue get-table ... --query "Table.Parameters"   # propiedades de partition projection
+{
+    "skip.header.line.count": "1",
+    "projection.fecha.format": "yyyy-MM-dd",
+    "projection.fecha.interval.unit": "DAYS",
+    "EXTERNAL": "TRUE",
+    "projection.fecha.range": "2026-10-01,2026-10-03",
+    "classification": "csv",
+    "projection.enabled": "true",
+    "projection.fecha.interval": "1",
+    "projection.fecha.type": "date",
+    "storage.location.template": "s3://la-bodega-del-pelao-entregas-jslm10/entregas/fecha=${fecha}/"
+}
+
+$ terraform plan -detailed-exitcode   # 0 = la infraestructura coincide con el codigo
+No changes. Your infrastructure matches the configuration.
+exit code: 0

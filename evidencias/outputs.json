@@ -1,0 +1,37 @@
+{
+  "base_datos": {
+    "sensitive": false,
+    "type": "string",
+    "value": "entregas_db"
+  },
+  "bucket": {
+    "sensitive": false,
+    "type": "string",
+    "value": "la-bodega-del-pelao-entregas-jslm10"
+  },
+  "prefijo_entregas": {
+    "sensitive": false,
+    "type": "string",
+    "value": "s3://la-bodega-del-pelao-entregas-jslm10/entregas/"
+  },
+  "prefijo_resultados_athena": {
+    "sensitive": false,
+    "type": "string",
+    "value": "s3://la-bodega-del-pelao-entregas-jslm10/resultados-athena/"
+  },
+  "region": {
+    "sensitive": false,
+    "type": "string",
+    "value": "us-east-2"
+  },
+  "tabla": {
+    "sensitive": false,
+    "type": "string",
+    "value": "entregas"
+  },
+  "workgroup": {
+    "sensitive": false,
+    "type": "string",
+    "value": "entregas-wg"
+  }
+}
